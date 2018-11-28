@@ -22,6 +22,7 @@ function render() {
 }
 
 let buildMonsterCards = function() {
+  monsterBox.innerHTML = ''
   monsterArray.forEach(function (monster) {
     let monsterCard = document.createElement('div')
     monsterCard.innerHTML = `
@@ -76,11 +77,15 @@ function createNewMonster(monster){
 }
 
 back.addEventListener('click',(()=>{
-    
+  if (page > 1){      
+    page--
+    monsterFetch()
+  } 
 }))
 
 forward.addEventListener('click',(()=>{
-
+  page++
+  monsterFetch()
 }))
 
 monsterFetch()
