@@ -1,0 +1,17 @@
+.settings {
+    white-space: nowrap;
+    display: inline-block;
+    overflow: hidden;
+    position: absolute;
+    background: rgba(255,255,255,1);
+    -webkit-box-shadow: 0 0 20px 2px rgba(50,50,50,.1);
+    box-shadow: 0 0 20px 2px rgba(50,50,50,.1);
+    padding: 20px;
+    margin: 0 auto;
+    top: 10%;
+    left: 0;
+    right: 0;
+    width: 80%;
+    max-width: 600px;
+    z-index: 9;
+}
