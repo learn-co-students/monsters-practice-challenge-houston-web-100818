@@ -46,7 +46,6 @@ const renderForm = function(){
   })
 }
 
-
 const postMonster = function(){
   console.log('mehhhhh')
   fetch('http://localhost:3000/monsters/', {
