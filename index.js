@@ -47,7 +47,6 @@ const renderForm = function(){
 }
 
 const postMonster = function(){
-  console.log('mehhhhh')
   fetch('http://localhost:3000/monsters/', {
     method: 'POST',
     headers: {
@@ -59,12 +58,23 @@ const postMonster = function(){
       description: document.querySelector('[name="description"]').value
     })
   }).then(function(){
+    alert(`${document.querySelector('[name="name"]').value} added to Monstr Inc. Database!`)
     document.querySelector('[name="name"]').value = ''
     document.querySelector('[name="age"]').value = ''
     document.querySelector('[name="description"]').value = ''
     fetchMonsters()
   })
 }
+
+backButton.addEventListener('click', function(e){
+  pageNum > 1 ? pageNum-- : alert('Nah')
+  fetchMonsters()
+})
+
+forwardButton.addEventListener('click', function(e){
+  monstersList.length == 50 ? pageNum++ : alert('no more')
+  fetchMonsters()
+})
 
 fetchMonsters()
 renderForm()
