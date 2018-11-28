@@ -5,8 +5,13 @@ const monsterBox = document.getElementById('monster-container')
 const createMonster = document.querySelector('#create-monster')
 const back = document.getElementById('back')
 const forward = document.getElementById('forward')
+let lastMonster;
 
 const monsterFetch = function(){
+    fetch(`http://localhost:3000/monsters?_limit=1&_sort=id&_order=desc`)
+    .then(response => response.json())
+    .then((lastData)=>{lastMonster = lastData[0]})
+    // console.log(lastMonster)
     fetch(`http://localhost:3000/monsters?_limit=50&_page=${page}`)
     .then(function(response){
         return response.json()
@@ -84,8 +89,22 @@ back.addEventListener('click',(()=>{
 }))
 
 forward.addEventListener('click',(()=>{
-  page++
-  monsterFetch()
+  if (isNotLastMonsterOnPage()) {
+    page++
+    monsterFetch()
+  }
 }))
+
+function isNotLastMonsterOnPage() {
+  if (monsterArray[monsterArray.length-1].id === lastMonster.id ) {
+    console.log(monsterArray[monsterArray.length - 1].id)
+    console.log(lastMonster.id)
+    return false
+  } else {
+    console.log(monsterArray[monsterArray.length - 1].id)
+    console.log(lastMonster.id)
+    return true
+  }
+}
 
 monsterFetch()
