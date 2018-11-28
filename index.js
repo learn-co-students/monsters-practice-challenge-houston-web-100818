@@ -58,6 +58,17 @@ const postMonster = function(){
       description: document.querySelector('[name="description"]').value
     })
   }).then(function(){
+    const canvas = document.createElement('canvas')
+    canvas.style.position = 'absolute'
+    canvas.id = "my-canvas"
+    document.body.prepend(canvas)
+    var confettiSettings = { target: 'my-canvas' };
+    var confetti = new ConfettiGenerator(confettiSettings);
+    confetti.render();
+    setTimeout(function(){
+      confetti.clear()
+      canvas.remove()
+    }, 10000)
     alert(`${document.querySelector('[name="name"]').value} added to Monstr Inc. Database!`)
     document.querySelector('[name="name"]').value = ''
     document.querySelector('[name="age"]').value = ''
@@ -72,7 +83,7 @@ backButton.addEventListener('click', function(e){
 })
 
 forwardButton.addEventListener('click', function(e){
-  monstersList.length == 50 ? pageNum++ : alert('no more')
+  monstersList.length < 50 ?  alert('no more') : pageNum++
   fetchMonsters()
 })
 
