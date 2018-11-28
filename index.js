@@ -97,12 +97,8 @@ forward.addEventListener('click',(()=>{
 
 function isNotLastMonsterOnPage() {
   if (monsterArray[monsterArray.length-1].id === lastMonster.id ) {
-    console.log(monsterArray[monsterArray.length - 1].id)
-    console.log(lastMonster.id)
     return false
   } else {
-    console.log(monsterArray[monsterArray.length - 1].id)
-    console.log(lastMonster.id)
     return true
   }
 }
